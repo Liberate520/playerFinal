@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:gravity="center"
+    android:id="@+id/itemPlayList">
+
+    <ImageView
+        android:id="@+id/pl_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_music_note_24"/>
+    <TextView
+        android:id="@+id/pl_text"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="все песни"
+        android:gravity="center"/>
+</LinearLayout>

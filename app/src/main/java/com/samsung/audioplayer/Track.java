@@ -7,6 +7,37 @@ public class Track {
     private String path;
     private long duration;
     private String trackList;
+    private long inProv;
+    private long inBase;
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", path='" + path + '\'' +
+                ", duration=" + duration +
+                ", trackList='" + trackList + '\'' +
+                ", inProv=" + inProv +
+                '}';
+    }
+
+    public long getInBase() {
+        return inBase;
+    }
+
+    public void setInBase(long inBase) {
+        this.inBase = inBase;
+    }
+
+    public long getInProv() {
+        return inProv;
+    }
+
+    public void setInProv(long inProv) {
+        this.inProv = inProv;
+    }
 
     public String getTrackList() {
         return trackList;
@@ -22,16 +53,6 @@ public class Track {
 
     public void setDuration(long duration) {
         this.duration = duration;
-    }
-
-    @Override
-    public String toString() {
-        return "Track{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", path='" + path + '\'' +
-                '}';
     }
 
     public long getId() {

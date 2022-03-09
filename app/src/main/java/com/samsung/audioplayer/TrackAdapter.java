@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,11 +20,13 @@ public class TrackAdapter extends ArrayAdapter<Track> {
 
     List<Track> list;
     TrackListActivity trackListActivity;
+    boolean first;
 
-    public TrackAdapter(@NonNull Context context, @NonNull List<Track> objects) {
+    public TrackAdapter(@NonNull Context context, @NonNull List<Track> objects, boolean first) {
         super(context, R.layout.item_track_list, objects);
         list = objects;
         trackListActivity = (TrackListActivity) context;
+        this.first = first;
     }
 
     @NonNull
@@ -43,6 +46,27 @@ public class TrackAdapter extends ArrayAdapter<Track> {
         });
 
         Track track = list.get(position);
+
+        ImageView addTrack = convertView.findViewById(R.id.addTrack);
+        if (!first) {
+            addTrack.setImageResource(R.drawable.ic_baseline_clear_24);
+            addTrack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    trackListActivity.removeTrack(track);
+                    list.remove(track);
+                    notifyDataSetChanged();
+                }
+            });
+        } else {
+            addTrack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    trackListActivity.addTrack(track);
+                }
+            });
+        }
+
 
         TextView title = convertView.findViewById(R.id.trackTitle);
         title.setText(track.getTitle());
